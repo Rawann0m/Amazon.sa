@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Place Order";
+}
+
+<h2>Place Order</h2>
+<form asp-action="PlaceOrder" method="post">
+    <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="number" class="form-control" id="userId" name="userId" required>
+    </div>
+    <div class="form-group">
+        <label for="productId">Product</label>
+        <select class="form-control" id="productId" name="productId" required>
+            @foreach (var product in ViewBag.Products) {
+                <option value="@product.ProductID">@product.Name - @product.Price.ToString("C")</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Place Order</button>
+</form>
